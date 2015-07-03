@@ -1,0 +1,19 @@
+{
+  "name": "eon",
+  "main": "index.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dotcypress/eon",
+  "authors": [
+    "Vitaly Domnikov <dotcypress@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "assets/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
