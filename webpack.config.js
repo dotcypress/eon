@@ -1,3 +1,5 @@
+var webpack = require('webpack');
+
 module.exports = {
   context: __dirname,
   entry: './assets/bootstrapper.js',
@@ -17,5 +19,9 @@ module.exports = {
       test: /\.(png|woff|woff2|eot|ttf|svg)$/,
       loader: 'url?&limit=100000'
     }]
-  }
+  },
+  plugins: [
+    new webpack.optimize.DedupePlugin(),
+    new webpack.NoErrorsPlugin()
+  ]
 };

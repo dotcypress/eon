@@ -1,2 +1,2 @@
-import { Dispatcher } from 'Flux';
+import { Dispatcher } from 'flux';
 export default new Dispatcher();

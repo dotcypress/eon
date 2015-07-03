@@ -4,7 +4,7 @@
   "description": "",
   "main": "bootstrapper.js",
   "scripts": {
-    "postinstall": "bower install & webpack",
+    "postinstall": "bower install --allow-root & webpack --optimize-minimize",
     "start": "supervisor --harmony bootstrapper.js",
     "watch": "supervisor -w config.js,index.js,lib --harmony bootstrapper.js & webpack -w",
     "test": "jest"
@@ -24,6 +24,7 @@
     "babel-core": "^5.6.15",
     "babel-jest": "^5.3.0",
     "babel-loader": "^5.2.2",
+    "bower": "^1.4.1",
     "css-loader": "^0.15.1",
     "debug": "^2.2.0",
     "file-loader": "^0.8.4",
