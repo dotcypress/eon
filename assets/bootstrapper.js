@@ -3,11 +3,11 @@ import './styles/main.css';
 import React from 'react';
 import { run, Route, DefaultRoute, HashLocation } from 'react-router';
 import 'react-bootstrap'
-import './js/dispatcher';
+import 'whatwg-fetch';
+import './js/stores/default';
 import { App } from './js/components/app';
 import { AboutPage } from './js/pages/about';
 import { HomePage } from './js/pages/home';
-
 
 var routes = (
   <Route handler={App} path="/">

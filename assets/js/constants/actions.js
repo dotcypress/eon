@@ -1,5 +1,5 @@
 import keyMirror from 'keymirror';
 
 export default keyMirror({
-  REFRESH: null
+  FETCH_APPS: null
 });

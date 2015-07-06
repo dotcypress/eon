@@ -1,22 +1,24 @@
-import { EventEmitter }
-from 'events';
-import assign from 'object-assign';
+import { EventEmitter } from 'events';
 import dispatcher from './../dispatcher';
 import actions from './../constants/actions';
 
+const CHANGE_EVENT = 'change';
+
 class DefaultStore extends EventEmitter {
 
-  const CHANGE_EVENT = 'change';
-
   constructor() {
-    this.dispatcherToken = dispatcher.register(this.dispatch);
+    super();
+    this.apps = [];
+    this.dispatcherToken = dispatcher.register(this.dispatch.bind(this));
   }
 
   dispatch(payload) {
+    console.log(payload);
     var action = payload.action;
     var text;
     switch (action.actionType) {
-      case actions.REFRESH:
+      case actions.FETCH_APPS:
+        this.fetchApps();
         break;
     }
     return true;
@@ -33,6 +35,18 @@ class DefaultStore extends EventEmitter {
   removeChangeListener(callback) {
     this.removeListener(CHANGE_EVENT, callback);
   }
+
+  fetchApps() {
+    fetch('/api/ping')
+      .then(function(response) {
+        return response.json()
+      })
+      .then(function(apps) {
+        this.apps = apps;
+        this.emitChange();
+      }.bind(this));
+  }
 }
 
-export new DefaultStore();
+export default new DefaultStore();
+
