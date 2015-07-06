@@ -8,12 +8,11 @@ class DefaultStore extends EventEmitter {
 
   constructor() {
     super();
-    this.apps = [];
-    this.dispatcherToken = dispatcher.register(this.dispatch.bind(this));
+    this.data = [];
+    this.dispatcherToken = dispatcher.register(m => this.dispatch(m));
   }
 
   dispatch(payload) {
-    console.log(payload);
     var action = payload.action;
     var text;
     switch (action.actionType) {
@@ -38,15 +37,14 @@ class DefaultStore extends EventEmitter {
 
   fetchApps() {
     fetch('/api/ping')
-      .then(function(response) {
+      .then(response => {
         return response.json()
       })
-      .then(function(apps) {
-        this.apps = apps;
+      .then(data => {
+        this.data = data;
         this.emitChange();
-      }.bind(this));
+      });
   }
 }
 
 export default new DefaultStore();
-

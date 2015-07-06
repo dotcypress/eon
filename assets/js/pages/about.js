@@ -1,4 +1,5 @@
 import React from 'react';
+import { Jumbotron } from 'react-bootstrap';
 
 export class AboutPage extends React.Component {
 
@@ -7,6 +8,9 @@ export class AboutPage extends React.Component {
   };
 
   render() {
-    return <div>About</div>;
+    return <Jumbotron>
+    <h1>eon</h1>
+    <p>React+Flux+Babel+Koa+Bootstrap+Webpack boilerplate.</p>
+  </Jumbotron>;
   };
 }
